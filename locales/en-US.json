@@ -1,0 +1,10 @@
+{
+    "bot": {
+        "description": "Bot configuration commands",
+        "language": {
+            "description": "Change the server language",
+            "select_description": "Select the server language",
+            "updated_message": "Server language updated!"
+        }
+    }
+}
