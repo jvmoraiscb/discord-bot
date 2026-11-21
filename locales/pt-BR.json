@@ -4,7 +4,14 @@
         "language": {
             "description": "Alterar o idioma do servidor",
             "select_description": "Selecione o idioma do servidor",
+            "select_en_us": "English (US)",
+            "select_pt_br": "Português (Brasil)",
             "updated_message": "Idioma do servidor atualizado!"
         }
+    },
+    "errors": {
+        "missing_permissions": "Você não possui as permissões necessárias para utilizar este comando!",
+        "check_failure": "Você não atende aos requisitos para utilizar este comando!",
+        "unexpected": "Ocorreu um erro inesperado ao executar este comando."
     }
 }

@@ -4,7 +4,14 @@
         "language": {
             "description": "Change the server language",
             "select_description": "Select the server language",
+            "select_en_us": "English (US)",
+            "select_pt_br": "Português (Brasil)",
             "updated_message": "Server language updated!"
         }
+    },
+    "errors": {
+        "missing_permissions": "You don't have permission to use this command!",
+        "check_failure": "You don't meet the requirements to use this command!",
+        "unexpected": "An unexpected error occurred."
     }
 }

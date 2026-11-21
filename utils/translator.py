@@ -1,7 +1,7 @@
 import discord
 
 from discord import app_commands
-from utils.localization import get_text
+from utils.localization import get_localized_text
 
 class BotTranslator(app_commands.Translator):
     async def translate(
@@ -22,6 +22,6 @@ class BotTranslator(app_commands.Translator):
             return None
 
         try:
-            return get_text(language, string.message)
+            return get_localized_text(language, string.message)
         except (KeyError, ValueError):
             return None

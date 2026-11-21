@@ -13,7 +13,7 @@ for file in LOCALES_DIR.glob("*.json"):
         translations[file.stem] = json.load(f)
 
 
-def get_text(language, key, **kwargs):
+def get_localized_text(language, key, **kwargs):
     if language not in SUPPORTED_LANGUAGES:
         language = DEFAULT_LANGUAGE
 

@@ -225,5 +225,6 @@ __marimo__/
 .streamlit/secrets.toml
 
 # discord-bot
+logs/
 temp/
 database.db

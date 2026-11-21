@@ -4,7 +4,7 @@ from discord import app_commands
 from discord.ext import commands
 
 from database import set_guild_language
-from utils.localization import get_text
+from utils.localization import get_localized_text
 
 class BotCommands(app_commands.Group):
     def __init__(self):
@@ -22,8 +22,14 @@ class BotCommands(app_commands.Group):
     )
     @app_commands.choices(
         language=[
-            app_commands.Choice(name="English (US)", value="en-US"),
-            app_commands.Choice(name="Português (Brasil)", value="pt-BR")
+            app_commands.Choice(
+                name=app_commands.locale_str("bot.language.select_en_us"),
+                value="en-US"
+            ),
+            app_commands.Choice(
+                name=app_commands.locale_str("bot.language.select_pt_br"),
+                value="pt-BR"
+            )
         ]
     )
     @app_commands.guild_only()
@@ -39,7 +45,7 @@ class BotCommands(app_commands.Group):
         )
 
         await interaction.response.send_message(
-            get_text(
+            get_localized_text(
                 language.value,
                 "bot.language.updated_message"
             ),
