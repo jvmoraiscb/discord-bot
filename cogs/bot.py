@@ -1,10 +1,13 @@
 import discord
+import logging
 
 from discord import app_commands
 from discord.ext import commands
 
 from database import set_guild_language
 from utils.localization import get_localized_text
+
+logger = logging.getLogger(__name__)
 
 class BotCommands(app_commands.Group):
     def __init__(self):
@@ -39,6 +42,7 @@ class BotCommands(app_commands.Group):
         interaction: discord.Interaction,
         language: app_commands.Choice[str]
     ):
+        logger.info("User '%s' used the '/bot language' command in guild '%s' (%s)", interaction.user.name, interaction.guild.name, interaction.guild.id)
         await set_guild_language(
             interaction.guild_id,
             language.value

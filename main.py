@@ -21,6 +21,7 @@ DEFAULT_LOG_LEVEL = logging.INFO
 
 Path("logs").mkdir(exist_ok=True)
 
+# logging.basicConfig
 discord.utils.setup_logging(
     level=DEFAULT_LOG_LEVEL
 )
@@ -42,7 +43,7 @@ file_handler.setFormatter(
 
 logging.getLogger().addHandler(file_handler)
 
-logger = logging.getLogger("discord_bot")
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -101,18 +102,22 @@ class DiscordBot(commands.Bot):
         await close_database()
 
     async def on_ready(self):
-        logger.info("DiscordBot connected as %s", self.user)
+        logger.info("DiscordBot connected as '%s'", self.user)
         logger.info("Connected to %s guild(s):", len(self.guilds))
         for guild in self.guilds:
-            logger.info("Connected to guild: %s (%s)", guild.name, guild.id)
+            logger.info("Connected to guild '%s' (%s)", guild.name, guild.id)
 
     async def on_guild_join(self, guild: discord.Guild):
-        logger.info("Joined guild: %s (%s)", guild.name, guild.id)
+        logger.info("Joined guild '%s' (%s)", guild.name, guild.id)
 
     async def on_guild_remove(self, guild: discord.Guild):
-        logger.info("Left guild: %s (%s)", guild.name, guild.id)
+        logger.info("Left guild '%s' (%s)", guild.name, guild.id)
 
-client = DiscordBot()
+    # ignore prefix commands
+    async def on_message(self, message: discord.Message):
+        pass
+
+bot = DiscordBot()
 
 
-client.run(os.getenv("DISCORD_TOKEN"))
+bot.run(os.getenv("DISCORD_TOKEN"))
